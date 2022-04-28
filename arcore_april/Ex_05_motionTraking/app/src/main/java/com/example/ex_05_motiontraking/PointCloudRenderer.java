@@ -1,15 +1,9 @@
-package com.example.ex_04_pointcloud;
+package com.example.ex_05_motiontraking;
 
-import android.opengl.GLES11Ext;
 import android.opengl.GLES20;
 import android.opengl.Matrix;
-import android.util.Size;
 
-import com.google.ar.core.Frame;
 import com.google.ar.core.PointCloud;
-
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
 
 public class PointCloudRenderer {
 

@@ -1,4 +1,4 @@
-package com.example.ex_04_pointcloud;
+package com.example.ex_03_camera_share;
 
 import android.opengl.GLES11Ext;
 import android.opengl.GLES20;
@@ -8,6 +8,7 @@ import com.google.ar.core.Frame;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
+import java.nio.ShortBuffer;
 
 public class CameraPreView {
     // GPU를 이용하여 고속 계산하여 화면처리 하기위한 코드

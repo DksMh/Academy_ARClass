@@ -1,4 +1,4 @@
-package com.example.ex_04_pointcloud;
+package com.example.ex_05_motiontraking;
 
 import android.opengl.GLES11Ext;
 import android.opengl.GLES20;
