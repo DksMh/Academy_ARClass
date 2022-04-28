@@ -25,124 +25,58 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
     float[] mProjectionMatrix = new float[16];
     float[] mViewMatrix = new float[16];
 
-    // 앞
-    float[] squareCoords = {
-            -0.5f, -0.5f, -0.5f,
-            0.5f, -0.5f, -0.5f,
-            0.5f, 0.5f, -0.5f,
-            -0.5f, 0.5f, -0.5f,
-            -0.5f, -0.5f, 0.5f,
-            0.5f, -0.5f, 0.5f,
-            0.5f, 0.5f, 0.5f,
-            -0.5f, 0.5f, 0.5f
+   // 좌표 그리기
+    float[] squareCoords = { // 1.0으로 하니까 너무 커서 0.5로 바꿨다.
+            -0.5f, -0.5f, -0.5f, // 아래 뒤 왼쪽
+           0.5f, -0.5f, -0.5f, // 아래 뒤 오른쪽
+           0.5f, 0.5f, -0.5f, // 위 뒤 오른쪽
+            -0.5f, 0.5f, -0.5f, //위 뒤 왼쪽
+            -0.5f, -0.5f, 0.5f, // 아래 앞 왼쪽
+           0.5f, -0.5f, 0.5f, // 아래 앞 오른쪽
+           0.5f, 0.5f, 0.5f, // 위 앞 오른쪽
+            -0.5f, 0.5f, 0.5f // 위 앞 왼쪽
     };
+    // Front
     float[] color = {0.5f, 0.5f, 0.5f, 1.0f};
     // 그리는 순서
-    short[] drawOrder = {
-            0, 1, 3, 3, 1, 2, // Front face.
-    };
+    short[] drawOrder = {0, 1, 3, 3, 1, 2,};
 
-    // 오
-    float[] squareCoords2 = {
-            -0.5f, -0.5f, -0.5f,
-            0.5f, -0.5f, -0.5f,
-            0.5f, 0.5f, -0.5f,
-            -0.5f, 0.5f, -0.5f,
-            -0.5f, -0.5f, 0.5f,
-            0.5f, -0.5f, 0.5f,
-            0.5f, 0.5f, 0.5f,
-            -0.5f, 0.5f, 0.5f
-    };
+    // Right
     float[] color2 = {1.0f, 1.0f, 0.0f, 1.0f};
     // 그리는 순서
-    short[] drawOrder2 = {
-            1, 2, 5, 5, 6, 2, // Right face.
-    };
+    short[] drawOrder2 = {1, 2, 5, 5, 6, 2,};
 
-    // 아래
-    float[] squareCoords3 = {
-            -0.5f, -0.5f, -0.5f,
-            0.5f, -0.5f, -0.5f,
-            0.5f, 0.5f, -0.5f,
-            -0.5f, 0.5f, -0.5f,
-            -0.5f, -0.5f, 0.5f,
-            0.5f, -0.5f, 0.5f,
-            0.5f, 0.5f, 0.5f,
-            -0.5f, 0.5f, 0.5f
-    };
+    // Bottom
     float[] color3 = { 0.7f, 0.7f, 1.0f, 1.0f};
     // 그리는 순서
-    short[] drawOrder3 = {
-            0, 1, 4, 4, 5, 1, // Bottom face.
-    };
+    short[] drawOrder3 = { 0, 1, 4, 4, 5, 1, };
 
     // top
-    float[] squareCoords4 = {
-            -0.5f, -0.5f, -0.5f,
-            0.5f, -0.5f, -0.5f,
-            0.5f, 0.5f, -0.5f,
-            -0.5f, 0.5f, -0.5f,
-            -0.5f, -0.5f, 0.5f,
-            0.5f, -0.5f, 0.5f,
-            0.5f, 0.5f, 0.5f,
-            -0.5f, 0.5f, 0.5f
-    };
     float[] color4 = {0.3f, 0.3f, 1.0f, 1.0f};
     // 그리는 순서
-    short[] drawOrder4 = {
-            2, 3, 6, 6, 7, 3, // Top face.
-    };
+    short[] drawOrder4 = {2, 3, 6, 6, 7, 3,};
 
-    // 왼
-    float[] squareCoords5 = {
-            -0.5f, -0.5f, -0.5f,
-            0.5f, -0.5f, -0.5f,
-            0.5f, 0.5f, -0.5f,
-            -0.5f, 0.5f, -0.5f,
-            -0.5f, -0.5f, 0.5f,
-            0.5f, -0.5f, 0.5f,
-            0.5f, 0.5f, 0.5f,
-            -0.5f, 0.5f, 0.5f
-    };
-    float[] color5 = { 1.0f,0.1f, 0.2f, 1.0f}; // -> 핑크
+    // left
+    float[] color5 = { 1.0f,0.1f, 0.2f, 1.0f};
     // 그리는 순서
-    short[] drawOrder5 = {
-            3, 7, 4, 4, 3, 0, // Left face.
-    };
+    short[] drawOrder5 = {3, 7, 4, 4, 3, 0,};
 
     // Rear
-    float[] squareCoords6 = {
-            -0.5f, -0.5f, -0.5f,
-            0.5f, -0.5f, -0.5f,
-            0.5f, 0.5f, -0.5f,
-            -0.5f, 0.5f, -0.5f,
-            -0.5f, -0.5f, 0.5f,
-            0.5f, -0.5f, 0.5f,
-            0.5f, 0.5f, 0.5f,
-            -0.5f, 0.5f, 0.5f
-//             -0.5f,0.5f,0.0f,
-//            -0.5f,-0.5f,0.0f,
-//            0.5f,-0.5f,0.0f,
-//            0.5f,0.5f,0.0f
-    };
-    float[] color6= {0.0f, 0.1f, 0.0f, 1.0f,}; // -> 핑크
+    float[] color6= {0.0f, 0.1f, 0.0f, 1.0f,};
     // 그리는 순서
-    short[] drawOrder6 = {
-            4, 5, 7, 7, 6, 5, // Rear face.
-            // 0,1,2,0,2,3
-    };
+    short[] drawOrder6 = {4, 5, 7, 7, 6, 5, };
 
 
     @Override
     public void onSurfaceCreated(GL10 gl10, EGLConfig eglConfig) {
         GLES20.glClearColor(0.0f, 1.0f, 1.0f, 1.0f);
-
+        // 6개의 면 보이기
         myBox = new Square(squareCoords, color, drawOrder);
-        myBox2 = new Square(squareCoords2, color2, drawOrder2);
-        myBox3 = new Square(squareCoords3, color3, drawOrder3);
-        myBox4 = new Square(squareCoords4, color4, drawOrder4);
-        myBox5 = new Square(squareCoords5, color5, drawOrder5);
-        myBox6 = new Square(squareCoords6, color6, drawOrder6);
+        myBox2 = new Square(squareCoords, color2, drawOrder2);
+        myBox3 = new Square(squareCoords, color3, drawOrder3);
+        myBox4 = new Square(squareCoords, color4, drawOrder4);
+        myBox5 = new Square(squareCoords, color5, drawOrder5);
+        myBox6 = new Square(squareCoords, color6, drawOrder6);
 
     }
 
@@ -171,13 +105,13 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
         // mMVPMatrix = mProjectionMatrix * mViewMatrix
         Matrix.multiplyMM(mMVPMatrix, 0, mProjectionMatrix, 0, mViewMatrix, 0);
 
-        // 정사각형 그리기
+        // 사각형 6개 그리기
          myBox.draw(mMVPMatrix);
-         myBox2.draw(mMVPMatrix);
-         myBox3.draw(mMVPMatrix);
-         myBox4.draw(mMVPMatrix);
          myBox5.draw(mMVPMatrix);
-        myBox6.draw(mMVPMatrix);
+         myBox4.draw(mMVPMatrix);
+         myBox3.draw(mMVPMatrix);
+         myBox2.draw(mMVPMatrix);
+         myBox6.draw(mMVPMatrix);
 
     }
 

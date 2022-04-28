@@ -28,42 +28,6 @@ public class Square {
                     "gl_FragColor = vColor;" +
                     "}";
 
-    // 직사각형 점의 좌표
-//    static float [] squareCoords = {
-//            // x, y, z
-//            -0.5f, 0.5f, 0.0f,  // 왼쪽 위
-//            -0.5f, -0.5f, 0.0f, // 왼쪽 아래
-//            0.5f, -0.5f, 0.0f,   // 오른쪽 아래
-//            0.5f, 0.5f, 0.0f,   // 오른쪽 위 // -> 이거 막으면 삼각형
-//    };
-    static float[] squareCoords = {
-            -0.5f, -0.5f, -0.5f,
-            0.5f, -0.5f, -0.5f,
-            0.5f, 0.5f, -0.5f,
-            -0.5f, 0.5f, -0.5f,
-            -0.5f, -0.5f, 0.5f,
-            0.5f, -0.5f, 0.5f,
-            0.5f, 0.5f, 0.5f,
-            -0.5f, 0.5f, 0.5f
-    };
-//    float[] color={
-//            1.0f, 0.5f, 0.3f, 0.4f,
-//            1.0f, 0.5f, 1.0f, 0.4f,
-//            1.0f, 0.5f, 0.2f, 0.4f,
-//            1.0f, 0.5f, 0.1f, 0.4f,
-//            1.0f, 0.7f, 0.1f, 0.4f,
-//            1.0f, 0.2f, 0.1f, 0.4f,
-//    };
-
-    // 그리는 순서
-//    short[] drawOrder = {
-//           // 0, 1, 3, 3, 1, 2, // Front face.
-//            //0, 1, 4, 4, 5, 1, // Bottom face.
-//            //1, 2, 5, 5, 6, 2, // Right face.
-//            //2, 3, 6, 6, 7, 3, // Top face.
-//            //3, 7, 4, 4, 3, 0, // Left face.
-//            //4, 5, 7, 7, 6, 5, // Rear face.
-//    };
     FloatBuffer vertexBuffer;
     ShortBuffer drawBuffer;
     int mProgram;
